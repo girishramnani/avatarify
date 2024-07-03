@@ -52,6 +52,7 @@ async function onDownload() {
 }
 
 async function onConnect() {
+  await wallet.switchAccounts();
   const accounts = await wallet.connect();
 
   console.log("here");

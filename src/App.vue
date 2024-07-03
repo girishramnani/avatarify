@@ -10,6 +10,7 @@ import OptionsTabs from './components/OptionsTabs.vue';
 import { useElementSize } from '@vueuse/core';
 import { ref } from 'vue';
 
+
 const i18n = useI18n();
 const store = useMainStore();
 
