@@ -13,7 +13,7 @@ Set the following environment variables
 
 ```bash
 export RPC_URL=https://arbitrum-sepolia.blockpi.network/v1/rpc/public
-export PRIVATE_KEY=add346348901c1c5e35f750628e322f99eee5b6d98d61d4213b0484ca9583b90
+export PRIVATE_KEY=
 ```
 
 ```bash

@@ -6,6 +6,11 @@ import availableStyles from '@/config/styles';
 import getApiUrl from '@/utils/getApiUrl';
 import { computed, ref } from 'vue';
 import { useFullscreen } from '@vueuse/core';
+import { ConnectWalletButton } from "vue-connect-wallet";
+import { useMetaMaskWallet } from "vue-connect-wallet";
+
+const address = ref("");
+const wallet = useMetaMaskWallet();
 
 const { t } = useI18n();
 const store = useMainStore();
@@ -46,9 +51,21 @@ async function onDownload() {
   URL.revokeObjectURL(file);
 }
 
+async function onConnect() {
+  const accounts = await wallet.connect();
+
+  console.log("here");
+  if (typeof accounts === "string") {
+    console.log("An error occurred" + accounts);
+  }
+  console.log(accounts);
+  address.value = accounts[0].trim();
+}
+
 function onFullscreen() {
   enter();
 }
+
 </script>
 
 <template>
@@ -97,9 +114,11 @@ function onFullscreen() {
     <Button
       rounded
       severity="secondary"
-      :label="t('save')"
+      :label="t('Mint')"
       @click="onDownload"
     />
+
+    <ConnectWalletButton @click="onConnect" address="address"/>
   </div>
 </template>
 
