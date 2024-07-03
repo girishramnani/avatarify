@@ -1,1 +1,1 @@
-# avatarify
+# Avatarify
